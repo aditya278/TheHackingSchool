@@ -1,10 +1,4 @@
-/*
-Problem: Write an Algorithm to extract input English Language sentence characters 
-and convert the characters to the 8-bit BINARY patterns.
-Import the ASCII Object attached into your source code.
-*/
-
-function driver(inputString) {
+module.exports.driver = function (inputString) {
     if(typeof inputString != 'string') {
       inputString = inputString.toString();
     }
@@ -68,7 +62,3 @@ function driver(inputString) {
     
     return lst.join("");
   }
-  
-  console.log(driver("CO/DE 2019"));
-  console.log(driver("AdItYa ShUkLa"));
-  console.log(driver("@#Hello World!"));
