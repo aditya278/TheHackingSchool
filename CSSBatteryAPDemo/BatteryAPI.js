@@ -13,7 +13,7 @@ function main() {
         batteryFill.style.backgroundColor = color;
 
         var percentLevel = document.getElementById('level');
-        percentLevel.innerText = battery_val + "%";
+        percentLevel.innerText = battery_val.toFixed(2) + "%";
 
         var chargingText = document.getElementById('charging');
         var isCharging = battery.charging ? 'Charging' : 'Not Charging';
