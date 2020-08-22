@@ -1,0 +1,13 @@
+.board {
+    height: 440px;
+    width: 440px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: grey;
+}
+
+.board div {
+    height: 40px;
+    width: 40px;
+    border: 2px solid black;
+}
