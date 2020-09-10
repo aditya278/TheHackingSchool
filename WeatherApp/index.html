@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="location">
+            <h1 id="location-city">Pune</h1>
+        </div>
+        <div class="temprature">
+            <img id="temprature-icon" src="./icons/atmosphere.svg" alt="atmosphere">
+            <p><span id="temprature-value">25</span><span id="temprature-unit" onclick="changeTempUnit();">°C | °F</span></p>
+            <div class="temprature-minmax">
+                <p id="temprature-min">Min: 25</p>
+                <p id="temprature-max">Max: 25</p>
+            </div>
+        </div>
+        <div class="details">
+            <p id="details-description">Sunny</p>
+            <p id="details-feelslike">Feels Like 30°C</p>
+        </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    background-image: linear-gradient(#399fa7, #2f64d4);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    width: 100vw;   
+    height: 100vh;
+}
+
+.location, .temprature, .details {
+    text-align: center;
+    color: rgb(221, 221, 221);
+}
+
+.temprature #temprature-icon {
+    margin: 2rem;
+    width: 20%;
+    height: auto;
+}
+
+.temprature #temprature-value {
+    font-size: 4rem;
+}
+
+.temprature #temprature-unit {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.temprature-minmax {
+    display: flex;
+    text-align: center;
+    color: rgb(221, 221, 221);
+    justify-content: center;
+    align-content: space-between;
+    margin: 1rem;
+    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.temprature-minmax #temprature-min {
+    padding-right: 4rem;
+}
+
+.location #location-city {
+    margin: 2rem;
+    font-size: 2.8rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.details {
+    margin: 2rem;
+    font-size: 1.25rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
