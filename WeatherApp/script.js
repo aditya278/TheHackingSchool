@@ -55,7 +55,7 @@ function main() {
 
 const getCityWeather = (lat, long) => {
     const URL = 'http://api.openweathermap.org/data/2.5/weather?';
-    const apiCall = `${URL}lat=${lat}&lon=${long}&appid=ff92aeed286bc824f06aa14b2a0e08b3`;
+    const apiCall = `${URL}lat=${lat}&lon=${long}&appid={API ID Here!}`;
     return axios.get(apiCall);
 }
 
