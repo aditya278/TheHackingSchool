@@ -1,13 +1,19 @@
+const apiKey = config.API_KEY;
+
 function main() {
     let long;
     let lat;
 
     if(navigator.geolocation) {
+
         navigator.geolocation.getCurrentPosition((position) => {
             long = position.coords.longitude;
             lat = position.coords.latitude;
+            console.log(lat,long);
+            document.getElementById('loading').style.display = 'inline-block';
             getCityWeather(lat, long)
                 .then((res) => {
+                    document.getElementById('loading').style.display = 'none';
                     const city = res.data.name;
                     const temprature = (res.data.main.temp - 273.15).toFixed(0);
                     const feelsLike = (res.data.main.feels_like - 273.15).toFixed(0);
@@ -18,7 +24,7 @@ function main() {
                     const maxTemp = (res.data.main.temp_max - 273.15).toFixed(0);
                     document.getElementById("location-city").innerHTML = city;
                     document.getElementById("temprature-value").innerHTML = temprature;
-                    document.getElementById("details-description").innerHTML = weather_desc;
+                    document.getElementById("details-description").innerHTML = weather_desc.charAt(0).toUpperCase() + weather_desc.slice(1);;
                     document.getElementById("details-feelslike").innerHTML = `Feels like: ${feelsLike}°C`;
                     document.getElementById("temprature-min").innerHTML = `Min: ${minTemp}°C`;
                     document.getElementById("temprature-max").innerHTML = `Max: ${maxTemp}°C`;
@@ -47,16 +53,73 @@ function main() {
                       }
                 })
                 .catch((err) => {
-                    console.log(err.message);
+                    alert("Something went wrong!");
                 });
         })
     }
 }
 
 const getCityWeather = (lat, long) => {
-    const URL = 'http://api.openweathermap.org/data/2.5/weather?';
-    const apiCall = `${URL}lat=${lat}&lon=${long}&appid=ff92aeed286bc824f06aa14b2a0e08b3`;
+    //const proxy = "https://cors-anywhere.herokuapp.com/";
+    //const URL = `${proxy}https://api.openweathermap.org/data/2.5/weather?`;
+    const URL = `http://api.openweathermap.org/data/2.5/weather?`;
+    const apiCall = `${URL}lat=${lat}&lon=${long}&appid=${apiKey}`;
     return axios.get(apiCall);
+}
+
+const getCityWeatherByName = (cityName) => {
+    //const proxy = "https://cors-anywhere.herokuapp.com/";
+    //const URL = `${proxy}https://api.openweathermap.org/data/2.5/weather?`;
+    const URL = `http://api.openweathermap.org/data/2.5/weather?`;
+    const apiCall = `${URL}q=${cityName}&appid=${apiKey}`;
+    return axios.get(apiCall);
+}
+
+function searchWeatherByName() {
+    const cityname = document.getElementById('location-city-name').value;
+    getCityWeatherByName(cityname)
+                .then((res) => {
+                    const city = res.data.name;
+                    const temprature = (res.data.main.temp - 273.15).toFixed(0);
+                    const feelsLike = (res.data.main.feels_like - 273.15).toFixed(0);
+                    const tempUnit = 'C';
+                    const weather_id = res.data.weather[0].id;
+                    const weather_desc = res.data.weather[0].description;
+                    const minTemp = (res.data.main.temp_min - 273.15).toFixed(0);
+                    const maxTemp = (res.data.main.temp_max - 273.15).toFixed(0);
+                    document.getElementById("location-city").innerHTML = city;
+                    document.getElementById("temprature-value").innerHTML = temprature;
+                    document.getElementById("details-description").innerHTML = weather_desc.charAt(0).toUpperCase() + weather_desc.slice(1);;
+                    document.getElementById("details-feelslike").innerHTML = `Feels like: ${feelsLike}°C`;
+                    document.getElementById("temprature-min").innerHTML = `Min: ${minTemp}°C`;
+                    document.getElementById("temprature-max").innerHTML = `Max: ${maxTemp}°C`;
+
+                    let tempIcon = document.getElementById("temprature-icon");
+                    if (weather_id<250){
+                        tempIcon.src = './icons/storm.svg' ;
+                      }
+                      else if (weather_id<350){
+                        tempIcon.src = './icons/drizzle.svg' ;
+                      }
+                      else if (weather_id<550){
+                        tempIcon.src = './icons/rain.svg' ;
+                      }
+                      else if (weather_id<650){
+                        tempIcon.src = './icons/snow.svg' ;
+                      }
+                      else if (weather_id<800){
+                        tempIcon.src = './icons/atmosphere.svg' ;
+                      }
+                      else if (weather_id===800){
+                        tempIcon.src = './icons/sun.svg' ;
+                      }
+                      else if(weather_id>800){
+                        tempIcon.src = './icons/clouds.svg' ;
+                      }
+                })
+                .catch((err) => {
+                    alert("Enter valid City Please!");
+                });
 }
 
 function changeTempUnit() {

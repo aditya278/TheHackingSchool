@@ -2,11 +2,30 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-size: 1rem;
 }
 
+@media only screen and (max-width: 360px) {
+    * {
+      font-size: 0.8rem;
+    }
+}
+
+@media only screen and (max-width: 1300) {
+    * {
+      font-size: 0.5rem;
+    }
+}
+
+
 body {
-    height: 100vh;
+    margin-top: 2vw;
+    height: auto;
+    width: auto;
     background-image: linear-gradient(#399fa7, #2f64d4);
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
 }
 
 .container {
@@ -18,14 +37,21 @@ body {
     height: 100vh;
 }
 
+.temp-data {
+    border: 5px solid;
+}
 .location, .temprature, .details {
     text-align: center;
     color: rgb(221, 221, 221);
 }
 
+.location {
+    margin-top: 4vh;
+}
+
 .temprature #temprature-icon {
-    margin: 2rem;
-    width: 20%;
+    margin-top: 1rem;
+    width: 9.5rem;
     height: auto;
 }
 
@@ -57,10 +83,52 @@ body {
     margin: 2rem;
     font-size: 2.8rem;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    
+}
+
+#AppName {
+    margin-top: 1rem;
+    font-size: 2.8rem;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    text-align: center;
+    color: #182236;
+}
+
+.location #search-icon {
+    cursor: pointer;
+    height: 30px;
+    width: 30px;
+    color: white;
+    height: auto;
+    margin-left: 1rem;
+}
+
+.location #location-city-name {
+    width: 40%;
+    height: 2vh;
+    border-radius: 100px;
+    padding: 10px;
+    border: 2px solid #2f64d4;
+    font-size: 1rem;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#location-city-name:focus {
+    outline: none;
 }
 
 .details {
-    margin: 2rem;
-    font-size: 1.25rem;
+    margin-top: 1.5rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#details-description, #details-feelslike {
+    padding: 1.5vh;
+}
+
+#loading {
+    width: 30px;
+    height: auto;
+    margin-left: 30px;
+    display: none;
 }

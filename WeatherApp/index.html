@@ -3,28 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Weather App to find the weather of your city!">
+    <meta property="og:title" content="Weather App">
+    <meta property="og:description" content="Weather App to find the weather of your city!">
+    <meta property="og:image" content="./icons/atmosphere.svg">
+    <!-- <meta http-equiv="refresh" content="2;url=https://iadityashukla.com/" /> -->
     <title>Weather App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
+        <h1 id="AppName">Weather App</h1>
         <div class="location">
-            <h1 id="location-city">Pune</h1>
+            <input type="text" id="location-city-name" placeholder="City Name Here"/><img id="search-icon" src="icons/search.png" onclick="searchWeatherByName();"/><img src="icons/loading.gif" id="loading"/>
+            <h1 id="location-city">Or allow Location Access!</h1>
         </div>
-        <div class="temprature">
+        <div class="temprature" id="temprature">
             <img id="temprature-icon" src="./icons/atmosphere.svg" alt="atmosphere">
-            <p><span id="temprature-value">25</span><span id="temprature-unit" onclick="changeTempUnit();">°C | °F</span></p>
+            <p><span id="temprature-value"></span><span id="temprature-unit" onclick="changeTempUnit();">°C | °F</span></p>
             <div class="temprature-minmax">
-                <p id="temprature-min">Min: 25</p>
-                <p id="temprature-max">Max: 25</p>
+                <p id="temprature-min">Minimum</p>
+                <p id="temprature-max">Maximum</p>
             </div>
         </div>
-        <div class="details">
-            <p id="details-description">Sunny</p>
-            <p id="details-feelslike">Feels Like 30°C</p>
+        <div class="details" id="details">
+            <p id="details-description"></p>
+            <hr style="width: 10vw; align-self: center; margin: 0; display: inline-block; ">
+            <p id="details-feelslike"></p>
         </div>
     </div>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js" crossorigin="anonymous"></script>
+    <script src="config.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
