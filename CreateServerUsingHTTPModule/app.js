@@ -19,36 +19,36 @@ const server = http.createServer((req, res) => {
         console.log('favicon requested');
         return;
     }
-
+    else {
     
-    let q = url.parse(req.url, true).query;
-    let username = q.username;
-    let password = q.password;
-    let userdata = q.userdata;
-    const filePath = `${path}/${username}.txt`;
+        let q = url.parse(req.url, true).query;
+        let username = q.username;
+        let password = q.password;
+        let userdata = q.userdata;
+        const filePath = `${path}/${username}.txt`;
 
-    access(filePath)
-        .then(() => {
+        fs.access(filePath, (err) => {
 
-            let date = new Date();
-            const out = `[${date.toLocaleString()}]: ${userdata}`;
-            const fileHeader = `UserName: ${username} Password: ${password}\n`;
-        
-            writeFile(filePath, (fileHeader + out))
-                .then(() => {
-                    res.statusCode = 200;
-                    res.end("<h1> Data Saved Successfully </h1>");
-                })
-                .catch((err) => {
-                    res.statusCode = 500;
-                    res.end("<h1> Data Save NOT Successfully </h1>");
-                });
-        })
-        .catch((err) => {
-
-            res.end("<h1>File Already Exist</h1>")
+            if(err) {
+                res.end("<h1>File Already Exist</h1>")
+            }
+            else {
+                let date = new Date();
+                const out = `[${date.toLocaleString()}]: ${userdata}`;
+                const fileHeader = `UserName: ${username} Password: ${password}\n`;
+            
+                writeFile(filePath, (fileHeader + out))
+                    .then(() => {
+                        res.statusCode = 200;
+                        res.end("<h1> Data Saved Successfully </h1>");
+                    })
+                    .catch((err) => {
+                        res.statusCode = 500;
+                        res.end("<h1> Data Save NOT Successfully </h1>");
+                    });
+            }
         });
-    
+    }
 });
 
 server.listen(port, () => {
