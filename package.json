@@ -6,11 +6,13 @@
   "dependencies": {
     "axios": "^0.20.0",
     "http": "^0.0.1-security",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "readline-sync": "^1.4.10"
   },
   "devDependencies": {},
   "scripts": {
-    "start": "nodemon ./CreateServerUsingHTTPModule/app.js"
+    "start": "nodemon ./CreateServerUsingHTTPModule/app.js",
+    "testFile" : "node ./SearchAStringInAFile/SearchInTextFile.js"
   },
   "repository": {
     "type": "git",
