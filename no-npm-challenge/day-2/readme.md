@@ -11,6 +11,7 @@
 
 4. To create SSL Keys (paste this in shell):
 openssl req -newkey rsa:2048 -new -nodes -x509 -days 3650 -keyout key.pem -out cert.pem
+Create a https folder and save those key and certificate there
 
 #### Day 2 Summary : 
 - Implemented algorithm to Design a Router and Router Handlers (Usually Express Router automatically does this)
