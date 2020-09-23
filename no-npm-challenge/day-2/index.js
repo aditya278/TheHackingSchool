@@ -4,9 +4,11 @@ Day-2: Designing Router, Implementing Env variables and create https server
 
 //Import all the modules
 const http = require('http');
+const https = require('https');
 const url = require('url');
 const stringDecoder = require('string_decoder').StringDecoder;
-const config = require('./config1.js')
+const config = require('./config1.js');
+const fs = require('fs');
 
 //Global Declaration
 const httpPort = config.httpPort;
@@ -65,7 +67,7 @@ const unifiedServer = (req, res) => {
         buffer += decoder.write(data);
     });
 
-    req.on('end', (data) => {
+    req.on('end', () => {
         buffer += decoder.end();
 
         const data = {
