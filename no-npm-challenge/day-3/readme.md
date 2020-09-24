@@ -7,7 +7,7 @@
 
 6. Create a lib folder to keep custom libraries. Inside it, we are goign to define all the API methods to access and perform the CRUD operations on the Files.
 
-#### Day 2 Summary : 
-- Fosuces mainly on performing CRUD Operation on File System.
+#### Day 3 Summary : 
+- Focuses mainly on performing CRUD Operation on File System.
 - Implemented a custom library having all the crud methods.
 - Explored different methods of fs module.
