@@ -20,14 +20,19 @@ lib.baseDir = path.join(__dirname, '/../.data');
 lib.create = (dir, file, data, callback) => {
     
     const filePath = `${lib.baseDir}/${dir}/${file}.json`;
-    
+    console.log(filePath);
     if(!fs.existsSync(filePath)) {
+        console.log('Not Exists!');
         const stringData = JSON.stringify(data);
         fs.writeFile(filePath, stringData, (err) => {
-            if(!err)
+            if(!err) {
                 callback(false);
-            else 
+                console.log('Not Exists!');
+            }
+            else {
+                console.error(err);
                 callback('Error encountered while writing the file!');
+            }
         });
     }
     else {
@@ -75,3 +80,11 @@ lib.delete = (dir, file, callback) => {
 }
 
 module.exports = lib;
+
+function createFile() {
+    lib.create('users', '123456789', "hello", (err) => {
+        console.log(err);
+    })
+}
+
+createFile();
