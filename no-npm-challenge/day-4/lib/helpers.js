@@ -14,4 +14,15 @@ helpers.hash = (str) => {
     }
 }
 
+//Parse Buffer to Object
+helpers.parseJsonToObject = (str) => {
+    try {
+        const jsonObject = JSON.parse(str);
+        return jsonObject;
+    }
+    catch(err) {
+        return {};
+    }
+}
+
 module.exports = helpers;

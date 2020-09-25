@@ -1,5 +1,5 @@
 /*
-Day-4: Implement REST Methods using Routers. Password Hashing
+Day-5: Implement REST Methods using Routers.
 */
 
 //Import all the modules
@@ -27,8 +27,8 @@ server.listen(httpPort, () => {
 
 //Reading Synchronously becasue https wont work without cert
 const httpsServerOptions = {
-    'key' : fs.readFileSync('./https/key.pem'),
-    'cert': fs.readFileSync('./https/cert.pem')
+    // 'key' : fs.readFileSync('./https/key.pem'),
+    // 'cert': fs.readFileSync('./https/cert.pem')
 }
 
 const httpsServer = https.createServer(httpsServerOptions, (req, res) => {
@@ -100,7 +100,7 @@ const unifiedServer = (req, res) => {
              res.setHeader('Content-Type', 'application/json');
              res.writeHead(statusCode);
              res.end(payloadString);
-             console.log(statusCode, payloadString, data);
+             console.log(statusCode, payloadString);
         });
     });
 

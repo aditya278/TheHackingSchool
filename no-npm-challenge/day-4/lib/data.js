@@ -5,6 +5,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const helpers = require('./helpers.js');
 
 const lib = {}      //Object containing all the Library methods
 
@@ -45,7 +46,13 @@ lib.read = (dir, file, callback) => {
     const filePath = `${lib.baseDir}/${dir}/${file}.json`;
 
     fs.readFile(filePath, 'utf-8', (err, data) => {
-        callback(err, data);
+        if(!err && data) {
+            const parsedData = helpers.parseJsonToObject(data);
+            callback(false, parsedData);
+        }
+        else {
+            callback(err, data);
+        }
     })
 }
 
@@ -80,11 +87,3 @@ lib.delete = (dir, file, callback) => {
 }
 
 module.exports = lib;
-
-function createFile() {
-    lib.create('users', '123456789', "hello", (err) => {
-        console.log(err);
-    })
-}
-
-createFile();
