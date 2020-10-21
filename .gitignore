@@ -10,3 +10,4 @@ node_modules
 .history/
 .vscode/settings.json
 config.js
+*.pem
